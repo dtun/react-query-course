@@ -17,7 +17,7 @@ export default function IssuesList() {
               key={issue.id}
               title={issue.title}
               number={issue.number}
-              asignee={issue.asignee}
+              assignee={issue.assignee}
               commentCount={issue.comments.length}
               createdBy={issue.createdBy}
               createdDate={issue.createdDate}

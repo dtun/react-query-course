@@ -6,13 +6,14 @@ import { useUserData } from '../helpers/useUserData';
 export function IssueItem({
   title,
   number,
-  asignee,
+  assignee,
   commentCount,
   createdBy,
   createdDate,
   labels,
   status,
 }) {
+  const assigneeUser = useUserData(assignee);
   const createdByUser = useUserData(createdBy);
 
   return (
@@ -38,7 +39,13 @@ export function IssueItem({
           {createdByUser.isSuccess ? `by ${createdByUser.data.name}` : null}
         </small>
       </div>
-      {asignee ? <div>{asignee}</div> : null}
+      {assignee && assigneeUser.isSuccess ? (
+        <img
+          alt={`Assigned to ${assigneeUser.data.name}`}
+          className="assigned-to"
+          src={assigneeUser.data.profilePictureUrl}
+        />
+      ) : null}
       <span className="comment-count">
         {commentCount > 0 ? (
           <>
