@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { GoIssueOpened, GoIssueClosed, GoComment } from 'react-icons/go';
 import { relativeDate } from '../helpers/relativeDate';
+import { useUserData } from '../helpers/useUserData';
 
 export function IssueItem({
   title,
@@ -12,6 +13,8 @@ export function IssueItem({
   labels,
   status,
 }) {
+  const createdByUser = useUserData(createdBy);
+
   return (
     <li>
       <div>
@@ -31,7 +34,8 @@ export function IssueItem({
           ))}
         </span>
         <small>
-          #{number} opened {relativeDate(createdDate)} by {createdBy}
+          #{number} opened {relativeDate(createdDate)}{' '}
+          {createdByUser.isSuccess ? `by ${createdByUser.data.name}` : null}
         </small>
       </div>
       {asignee ? <div>{asignee}</div> : null}
