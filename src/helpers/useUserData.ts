@@ -1,9 +1,10 @@
 import { useQuery } from 'react-query';
+import { fetchWithError } from './fetchWithError';
 
 export function useUserData(userId) {
   const usersData = useQuery(
     ['users', userId],
-    () => fetch(`/api/users/${userId}`).then((res) => res.json()),
+    () => fetchWithError(`/api/users/${userId}`),
     { enabled: Boolean(userId) }
   );
 

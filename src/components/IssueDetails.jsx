@@ -1,19 +1,18 @@
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
+import { fetchWithError } from '../helpers/fetchWithError';
 import { Comment } from './Comment';
 import { IssueHeader } from './IssueHeader';
 
 function useIssueData(issueNumber) {
   return useQuery(['issues', issueNumber], () => {
-    return fetch(`/api/issues/${issueNumber}`).then((res) => res.json());
+    return fetchWithError(`/api/issues/${issueNumber}`);
   });
 }
 
 function useIssueComments(issueNumber) {
   return useQuery(['issues', issueNumber, 'comments'], () => {
-    return fetch(`/api/issues/${issueNumber}/comments`).then((res) =>
-      res.json()
-    );
+    return fetchWithError(`/api/issues/${issueNumber}/comments`);
   });
 }
 

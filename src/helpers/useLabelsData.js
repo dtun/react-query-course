@@ -1,7 +1,8 @@
 import { useQuery } from "react-query";
+import { fetchWithError } from "./fetchWithError";
 
 export function useLabelsData() {
-  const labelsQuery = useQuery(['labels'], () => fetch('/api/labels').then(res => res.json()));
+  const labelsQuery = useQuery(['labels'], () => fetchWithError('/api/labels'));
 
   return labelsQuery;
 }
