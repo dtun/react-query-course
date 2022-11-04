@@ -5,14 +5,14 @@ import { Comment } from './Comment';
 import { IssueHeader } from './IssueHeader';
 
 function useIssueData(issueNumber) {
-  return useQuery(['issues', issueNumber], () => {
-    return fetchWithError(`/api/issues/${issueNumber}`);
+  return useQuery(['issues', issueNumber], ({ signal }) => {
+    return fetchWithError(`/api/issues/${issueNumber}`, { signal });
   });
 }
 
 function useIssueComments(issueNumber) {
-  return useQuery(['issues', issueNumber, 'comments'], () => {
-    return fetchWithError(`/api/issues/${issueNumber}/comments`);
+  return useQuery(['issues', issueNumber, 'comments'], ({ signal }) => {
+    return fetchWithError(`/api/issues/${issueNumber}/comments`, { signal });
   });
 }
 
