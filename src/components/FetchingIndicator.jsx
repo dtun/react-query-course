@@ -1,4 +1,3 @@
-import { FaSpinner } from 'react-icons/fa';
 import { useIsFetching } from 'react-query';
 import { Loader } from './Loader';
 
