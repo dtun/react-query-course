@@ -2,6 +2,7 @@ import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { fetchWithError } from '../helpers/fetchWithError';
 import { Comment } from './Comment';
+import { IssueAssignment } from './IssueAssignment';
 import { IssueHeader } from './IssueHeader';
 import { IssueStatus } from './IssueStatus';
 
@@ -42,6 +43,10 @@ export default function IssueDetails() {
             <aside>
               <IssueStatus
                 status={issueQuery.data.status}
+                issueNumber={String(issueQuery.data.number)}
+              />
+              <IssueAssignment
+                assignee={issueQuery.data.assignee}
                 issueNumber={String(issueQuery.data.number)}
               />
             </aside>
