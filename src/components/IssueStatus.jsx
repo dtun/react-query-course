@@ -8,7 +8,7 @@ export function IssueStatus({ status, issueNumber }) {
       fetch(`/api/issues/${issueNumber}`, {
         method: 'PUT',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(status),
+        body: JSON.stringify({ status }),
       }).then((res) => res.json());
     },
     {
