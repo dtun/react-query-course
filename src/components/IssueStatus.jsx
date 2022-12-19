@@ -30,7 +30,7 @@ export function IssueStatus({ status, issueNumber }) {
           }));
         };
       },
-      onError(_, _, rollback) {
+      onError(_arg1, _arg2, rollback) {
         rollback();
       },
       onSettled() {
