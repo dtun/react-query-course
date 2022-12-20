@@ -4,6 +4,7 @@ import { fetchWithError } from '../helpers/fetchWithError';
 import { Comment } from './Comment';
 import { IssueAssignment } from './IssueAssignment';
 import { IssueHeader } from './IssueHeader';
+import { IssueLabels } from './IssueLabels';
 import { IssueStatus } from './IssueStatus';
 
 function useIssueData(issueNumber) {
@@ -47,6 +48,10 @@ export default function IssueDetails() {
               />
               <IssueAssignment
                 assignee={issueQuery.data.assignee}
+                issueNumber={String(issueQuery.data.number)}
+              />
+              <IssueLabels
+                labels={issueQuery.data.labels}
                 issueNumber={String(issueQuery.data.number)}
               />
             </aside>
