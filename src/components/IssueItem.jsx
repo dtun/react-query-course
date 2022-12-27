@@ -26,8 +26,9 @@ export function IssueItem({
         queryClient.prefetchQuery(['issues', String(number)], () =>
           fetchWithError(`/api/issues/${issueNumber}`)
         );
-        queryClient.prefetchQuery(['issues', String(number), 'comments'], () =>
-          fetchWithError(`/api/issues/${number}/comments`)
+        queryClient.prefetchInfiniteQuery(
+          ['issues', String(number), 'comments'],
+          () => fetchWithError(`/api/issues/${number}/comments?page=1`)
         );
       }}
     >
